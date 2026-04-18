@@ -1,51 +1,128 @@
-# Nomina
+// Sistema de Nómina con Vaadin
 
-This project can be used as a starting point to create your own Vaadin application with Spring Boot.
-It contains all the necessary configuration and some placeholder files to get you started.
+// Descripción
 
-## Running the application
+Este proyecto es una aplicación web desarrollada en **Java** utilizando el framework **Vaadin**, que permite calcular la nómina de diferentes tipos de empleados mediante una interfaz gráfica sencilla.
 
-Open the project in an IDE. You can download the [IntelliJ community edition](https://www.jetbrains.com/idea/download) if you do not have a suitable IDE already.
-Once opened in the IDE, locate the `Application` class and run the main method using "Debug".
+El sistema aplica conceptos de **Programación Orientada a Objetos (POO)** como herencia, polimorfismo y abstracción para calcular el salario según el tipo de contrato.
 
-For more information on installing in various IDEs, see [how to import Vaadin projects to different IDEs](https://vaadin.com/docs/latest/getting-started/import).
 
-If you install the Vaadin plugin for IntelliJ, you should instead launch the `Application` class using "Debug using HotswapAgent" to see updates in the Java code immediately reflected in the browser.
+// Estructura del proyecto
 
-## Deploying to Production
-
-The project is a standard Maven project. To create a production build, call 
+El proyecto está organizado en paquetes, destacando:
 
 ```
-./mvnw clean package
+views.nomina
+│
+├── Nomina.java
+├── INomina.java
+├── NominaEmpleadoFijo.java
+├── NominaPorHoras.java
+├── NominaComision.java
+├── NominasPredefinidas.java
+└── NominaView.java
 ```
 
-If you have Maven globally installed, you can replace `./mvnw` with `mvn`.
+---------------
 
-This will build a JAR file with all the dependencies and front-end resources,ready to be run. The file can be found in the `target` folder after the build completes.
-You then launch the application using 
+* Conceptos aplicados
+
+  * Herencia
+
+Las clases de empleados heredan de la clase base `Nomina`.
+
+  * Polimorfismo
+
+Cada tipo de empleado implementa el método `calcularSalario()` de forma diferente.
+
+  * Encapsulamiento
+
+Los atributos son privados y se accede a ellos mediante métodos.
+
+  * Abstracción
+
+La clase `Nomina` define una estructura general para todos los empleados.
+
+-----------------
+
+* Tipos de nómina implementados
+
+  * Empleado Fijo
+
+    Cálculo:
+    `salario = salarioBase + bonificación`
+
+  * Empleado por Horas
+
+    * Cálculo:
+    `salario = horasTrabajadas × valorHora`
+
+  * Empleado por Comisión
+
+    * Cálculo:
+    `salario = ventas × porcentaje`
+
+----------------
+
+* Interfaz de usuario
+
+La aplicación cuenta con una interfaz web desarrollada con Vaadin que permite:
+
+* Seleccionar un tipo de empleado
+* Ingresar datos (horas o ventas)
+* Calcular el salario
+* Visualizar el resultado
+
+---
+
+* Ejecución del proyecto
+
+1. Clonar el repositorio:
+
 ```
-java -jar target/my-app-1.0-SNAPSHOT.jar
+git clone <URL_DEL_REPOSITORIO>
 ```
 
-## Project structure
+2. Abrir el proyecto en IntelliJ o VS Code
 
-- `MainLayout.java` in `src/main/java` contains the navigation setup (i.e., the
-  side/top bar and the main menu). This setup uses
-  [App Layout](https://vaadin.com/docs/components/app-layout).
-- `views` package in `src/main/java` contains the server-side Java views of your application.
-- `views` folder in `src/main/frontend` contains the client-side JavaScript views of your application.
-- `themes` folder in `src/main/frontend` contains the custom CSS styles.
+3. Ejecutar la clase principal:
 
-## Useful links
+```
+Application.java
+```
 
-- Read the documentation at [vaadin.com/docs](https://vaadin.com/docs).
-- Follow the tutorial at [vaadin.com/docs/latest/tutorial/overview](https://vaadin.com/docs/latest/tutorial/overview).
-- Create new projects at [start.vaadin.com](https://start.vaadin.com/).
-- Search UI components and their usage examples at [vaadin.com/docs/latest/components](https://vaadin.com/docs/latest/components).
-- View use case applications that demonstrate Vaadin capabilities at [vaadin.com/examples-and-demos](https://vaadin.com/examples-and-demos).
-- Build any UI without custom CSS by discovering Vaadin's set of [CSS utility classes](https://vaadin.com/docs/styling/lumo/utility-classes). 
-- Find a collection of solutions to common use cases at [cookbook.vaadin.com](https://cookbook.vaadin.com/).
-- Find add-ons at [vaadin.com/directory](https://vaadin.com/directory).
-- Ask questions on [Stack Overflow](https://stackoverflow.com/questions/tagged/vaadin) or join our [Forum](https://vaadin.com/forum).
-- Report issues, create pull requests in [GitHub](https://github.com/vaadin).
+4. Abrir en el navegador:
+
+```
+http://localhost:8080
+```
+
+----------------
+
+* Ejemplo de uso
+
+1. Seleccionar un empleado
+2. Ingresar valor:
+
+   * Horas (empleado por horas)
+   * Ventas (empleado por comisión)
+3. Presionar **Calcular**
+4. Visualizar el salario
+
+-----------------
+
+* Posibles mejoras
+
+* Conexión a base de datos
+* Cálculo de prestaciones (salud, pensión)
+* Gestión de empleados (CRUD)
+* Mejoras en el diseño de la interfaz
+
+------------------
+
+// Autores 
+
+ - Hendris Urbina
+ - Ariel De La Rosa
+ - Yeison Arbey García Mesa
+

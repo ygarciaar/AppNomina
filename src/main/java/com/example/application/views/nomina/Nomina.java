@@ -3,72 +3,70 @@ package com.example.application.views.nomina;
 import java.util.Objects;
 
 public abstract class Nomina {
-  private String nombre;
-  private String salario;
-  private String bonificaciones;
-  private String deducciones;
 
-  protected Nomina(String nombre, String salario, String bonificaciones, String deducciones) {
-    setNombre(nombre);
-    setSalario(salario);
-    setBonificaciones(bonificaciones);
-    setDeducciones(deducciones);
-  }
+    private String nombreEmpleado;
+    private String tipoContrato;
+    private String descripcion;
 
-  public String nombre() {
-    return getNombre();
-  }
+    protected Nomina(String nombreEmpleado, String tipoContrato, String descripcion) {
+        setNombreEmpleado(nombreEmpleado);
+        setTipoContrato(tipoContrato);
+        setDescripcion(descripcion);
+    }
 
-  public String salario() {
-    return getSalario();
-  }
+    public String nombreEmpleado() {
+        return getNombreEmpleado();
+    }
 
-  public String bonificaciones() {
-    return getBonificaciones();
-  }
+    public String tipoContrato() {
+        return getTipoContrato();
+    }
 
-  public String deducciones() {
-    return getDeducciones();
-  }
+    public String descripcion() {
+        return getDescripcion();
+    }
 
-  public String etiqueta() {
-    return nombre() + " - Salario: " + salario() + ", Bonificaciones: " + bonificaciones() + ", Deducciones: " + deducciones();
-  }
+    public String etiqueta() {
+        return nombreEmpleado() + " (" + tipoContrato() + ")";
+    }
 
-  public String getNombre() {
-    return nombre;
-  }
+    public String getNombreEmpleado() {
+        return nombreEmpleado;
+    }
 
-  public void setNombre(String nombre) {
-    this.nombre = Objects.requireNonNull(nombre, "nombre").trim();
-  }
+    public void setNombreEmpleado(String nombreEmpleado) {
+        this.nombreEmpleado = validarTexto(nombreEmpleado, "nombreEmpleado");
+    }
 
-  public String getSalario() {
-    return salario;
-  }
+    public String getTipoContrato() {
+        return tipoContrato;
+    }
 
-  public void setSalario(String salario) {
-    this.salario = Objects.requireNonNull(salario, "salario").trim();
-  }
+    public void setTipoContrato(String tipoContrato) {
+        this.tipoContrato = validarTexto(tipoContrato, "tipoContrato");
+    }
 
-  public String getBonificaciones() {
-    return bonificaciones;
-  }
+    public String getDescripcion() {
+        return descripcion;
+    }
 
-  public void setBonificaciones(String bonificaciones) {
-    this.bonificaciones = Objects.requireNonNull(bonificaciones, "bonificaciones").trim();
-  }
+    public void setDescripcion(String descripcion) {
+        this.descripcion = validarTexto(descripcion, "descripcion");
+    }
 
-  public String getDeducciones() {
-    return deducciones;
-  }
+    @Override
+    public String toString() {
+        return etiqueta();
+    }
 
-  public void setDeducciones(String deducciones) {
-    this.deducciones = Objects.requireNonNull(deducciones, "deducciones").trim();
-  }
+    // 🔥 MÉTODO CLAVE (como convertir en el otro proyecto)
+    public abstract double calcularSalario(double valor);
 
-  @Override
-  public String toString() {
-    return etiqueta();
-  }
+    private static String validarTexto(String valor, String campo) {
+        String v = Objects.requireNonNull(valor, campo).trim();
+        if (v.isEmpty()) {
+            throw new IllegalArgumentException(campo + " no puede estar vacío");
+        }
+        return v;
+    }
 }
