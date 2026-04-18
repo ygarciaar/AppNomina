@@ -73,29 +73,6 @@ La aplicación cuenta con una interfaz web desarrollada con Vaadin que permite:
 * Calcular el salario
 * Visualizar el resultado
 
----
-
-* Ejecución del proyecto
-
-1. Clonar el repositorio:
-
-```
-git clone <URL_DEL_REPOSITORIO>
-```
-
-2. Abrir el proyecto en IntelliJ o VS Code
-
-3. Ejecutar la clase principal:
-
-```
-Application.java
-```
-
-4. Abrir en el navegador:
-
-```
-http://localhost:8080
-```
 
 ----------------
 
